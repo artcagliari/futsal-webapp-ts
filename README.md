@@ -280,15 +280,9 @@ app.get('/api/nova-rota', (req: Request, res: Response) => {
 
 ISC
 
-## 👤 Autor
-
-Desenvolvido por [artcagliari](https://github.com/artcagliari)
-
 ## 🤝 Contribuindo
 
 Contribuições são bem-vindas! Sinta-se à vontade para abrir issues e pull requests.
 
----
 
-**Desenvolvido com ❤️ usando React + TypeScript + Express**
 
