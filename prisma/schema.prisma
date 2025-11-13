@@ -1,0 +1,61 @@
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite" // Usando SQLite
+  url      = env("DATABASE_URL")
+}
+
+// Model para Campeonatos [cite: 49]
+model Campeonato {
+  id    Int      @id @default(autoincrement())
+  nome  String
+  ano   Int
+  
+  // Relações
+  equipes Equipe[]
+  jogos   Jogo[]
+}
+
+// Model para Equipes [cite: 50]
+model Equipe {
+  id     Int    @id @default(autoincrement())
+  nome   String @unique
+  
+  // Relação: Uma equipe pertence a um campeonato
+  campeonatoId Int
+  campeonato   Campeonato @relation(fields: [campeonatoId], references: [id])
+  
+  // Relação: Jogos
+  jogosCasa Jogo[] @relation("EquipeCasa")
+  jogosFora Jogo[] @relation("EquipeFora")
+}
+
+// Model para Jogos [cite: 51]
+model Jogo {
+  id        Int     @id @default(autoincrement())
+  fase      String  // Ex: "Fase de Grupos", "Semifinal"
+  placar1   Int
+  placar2   Int
+  
+  // Relação: Jogo pertence a um campeonato
+  campeonatoId Int
+  campeonato   Campeonato @relation(fields: [campeonatoId], references: [id])
+
+  // Relação: Equipes do jogo
+  equipe1Id Int
+  equipe1   Equipe @relation("EquipeCasa", fields: [equipe1Id], references: [id])
+  
+  equipe2Id Int
+  equipe2   Equipe @relation("EquipeFora", fields: [equipe2Id], references: [id])
+}
+
+// Model para Notícias [cite: 52]
+model Noticia {
+  id              Int      @id @default(autoincrement())
+  titulo          String
+  conteudo        String
+  dataPublicacao  DateTime @default(now())
+}

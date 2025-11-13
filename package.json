@@ -1,0 +1,39 @@
+{
+  "name": "futsal-webapp-ts",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
+    "dev:server": "tsx watch src/server.ts",
+    "dev:client": "cd client && npm run dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/artcagliari/futsal-webapp-ts.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/artcagliari/futsal-webapp-ts/issues"
+  },
+  "homepage": "https://github.com/artcagliari/futsal-webapp-ts#readme",
+  "dependencies": {
+    "@prisma/client": "^6.19.0",
+    "cors": "^2.8.5",
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.5",
+    "@types/node": "^24.10.1",
+    "concurrently": "^9.2.1",
+    "prisma": "^6.19.0",
+    "ts-node-dev": "^2.0.0",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3"
+  }
+}

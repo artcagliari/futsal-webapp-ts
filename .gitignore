@@ -1,0 +1,32 @@
+# Dependências
+
+node_modules/
+
+client/node_modules/
+
+
+
+# Build
+
+dist/
+
+client/dist/
+
+
+
+# Logs
+
+npm-debug.log*
+
+yarn-debug.log*
+
+
+
+# Env
+
+.env
+
+.env.local
+
+
+/src/generated/prisma
