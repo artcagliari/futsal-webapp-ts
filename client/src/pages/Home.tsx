@@ -1,4 +1,3 @@
-// Em: client/src/pages/Home.tsx
 import { Link } from 'react-router-dom';
 import './Home.css';
 

@@ -1,7 +1,5 @@
-// Em: client/src/pages/Campeonatos.tsx
 import { useState, useEffect } from 'react';
 
-// Definindo um tipo para os dados do campeonato
 type Campeonato = {
   id: number;
   nome: string;
@@ -14,7 +12,6 @@ export function Campeonatos() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    // Busca os dados da API usando o proxy do Vite
     fetch('/api/campeonatos')
       .then(res => {
         if (!res.ok) throw new Error('Erro ao buscar campeonatos');

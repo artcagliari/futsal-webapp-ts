@@ -1,9 +1,7 @@
-// Em: src/server.ts
-
 import express from 'express';
 import type { Request, Response } from 'express';
 import cors from 'cors';
-import { prisma } from './lib/prisma.js'; // Importe o cliente Prisma
+import { prisma } from './lib/prisma.js';
 
 const app = express();
 const PORT = 3001;
@@ -11,12 +9,6 @@ const PORT = 3001;
 app.use(cors());
 app.use(express.json());
 
-// --- Rotas da API ---
-
-/* * CRUD para CAMPEONATOS 
- */
-
-// CREATE (Criar)
 app.post('/api/campeonatos', async (req: Request, res: Response) => {
   const { nome, ano } = req.body;
   
@@ -24,7 +16,7 @@ app.post('/api/campeonatos', async (req: Request, res: Response) => {
     const campeonato = await prisma.campeonato.create({
       data: {
         nome,
-        ano: parseInt(ano), // Garante que ano seja número
+        ano: parseInt(ano),
       },
     });
     res.status(201).json(campeonato);
@@ -33,13 +25,11 @@ app.post('/api/campeonatos', async (req: Request, res: Response) => {
   }
 });
 
-// READ (Ler - Todos)
 app.get('/api/campeonatos', async (req: Request, res: Response) => {
   const campeonatos = await prisma.campeonato.findMany();
   res.json(campeonatos);
 });
 
-// READ (Ler - Um por ID)
 app.get('/api/campeonatos/:id', async (req: Request, res: Response) => {
   const { id } = req.params;
   if (!id) {
@@ -54,10 +44,6 @@ app.get('/api/campeonatos/:id', async (req: Request, res: Response) => {
   res.json(campeonato);
 });
 
-/* * CRUD para NOTÍCIAS 
- */
-
-// CREATE (Criar)
 app.post('/api/noticias', async (req: Request, res: Response) => {
   const { titulo, conteudo } = req.body;
   try {
@@ -70,17 +56,13 @@ app.post('/api/noticias', async (req: Request, res: Response) => {
   }
 });
 
-// READ (Ler - Todas)
 app.get('/api/noticias', async (req: Request, res: Response) => {
   const noticias = await prisma.noticia.findMany({
-    orderBy: { dataPublicacao: 'desc' }, // Ordena por mais recente
+    orderBy: { dataPublicacao: 'desc' },
   });
   res.json(noticias);
 });
 
-// (O restante do CRUD de Notícias, Equipes e Jogos seguiria o mesmo padrão)
-
-// --- Iniciar o Servidor ---
 app.listen(PORT, () => {
   console.log(`Servidor back-end rodando em http://localhost:${PORT}`);
 });

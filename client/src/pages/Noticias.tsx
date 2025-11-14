@@ -1,4 +1,3 @@
-// Em: client/src/pages/Noticias.tsx
 import { useState, useEffect } from 'react';
 
 type Noticia = {
@@ -14,7 +13,6 @@ export function Noticias() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    // Busca os dados da API usando o proxy do Vite
     fetch('/api/noticias')
       .then(res => {
         if (!res.ok) throw new Error('Erro ao buscar notícias');

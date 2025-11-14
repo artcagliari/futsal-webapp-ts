@@ -1,4 +1,3 @@
-// Em: client/src/components/Footer.tsx
 export function Footer() {
     return (
       <footer className="mt-auto" style={{
