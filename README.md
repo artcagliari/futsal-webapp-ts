@@ -467,12 +467,14 @@ O projeto utiliza:
 4. **Login** (`/login`)
    - Formulário de login
    - Validação de credenciais
+   - Redireciona automaticamente para `/admin` se já estiver autenticado
    - Redireciona para `/admin` após login bem-sucedido
    - Link para página de registro
 
 5. **Registro** (`/register`)
    - Formulário de cadastro
    - Validação de senhas (confirmação e tamanho mínimo)
+   - Redireciona automaticamente para `/admin` se já estiver autenticado
    - Login automático após registro
    - Link para página de login
 
@@ -487,7 +489,10 @@ O projeto utiliza:
 
 ### Componentes
 
-- **Navbar**: Barra de navegação com links e botões de login/registro
+- **Navbar**: Barra de navegação com navegação condicional
+  - Se **não autenticado**: mostra botões "Cadastrar" e "Login"
+  - Se **autenticado**: mostra botão "Área Admin" e "Logout"
+  - Links para páginas públicas sempre visíveis
 - **Footer**: Rodapé com informações do sistema
 - **ProtectedRoute**: Componente que protege rotas, redireciona para login se não autenticado
 
