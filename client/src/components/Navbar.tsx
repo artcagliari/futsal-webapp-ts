@@ -1,7 +1,14 @@
 import { Link, useLocation } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
 export function Navbar() {
   const location = useLocation();
+  const { isAuthenticated, logout } = useAuth();
+
+  const handleLogout = () => {
+    logout();
+    window.location.href = '/';
+  };
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark" style={{ 
@@ -51,15 +58,25 @@ export function Navbar() {
             </li>
           </ul>
           <div className="d-flex gap-2">
-            <Link className="btn btn-outline-light" to="/register" style={{ borderRadius: '8px' }}>
-              Cadastrar
-            </Link>
-            <Link className="btn btn-outline-light" to="/login" style={{ borderRadius: '8px' }}>
-              Login
-            </Link>
-            <Link className="btn btn-light" to="/admin" style={{ borderRadius: '8px' }}>
-              Área Admin
-            </Link>
+            {isAuthenticated ? (
+              <>
+                <Link className="btn btn-light" to="/admin" style={{ borderRadius: '8px' }}>
+                  Área Admin
+                </Link>
+                <button className="btn btn-outline-light" onClick={handleLogout} style={{ borderRadius: '8px' }}>
+                  Logout
+                </button>
+              </>
+            ) : (
+              <>
+                <Link className="btn btn-outline-light" to="/register" style={{ borderRadius: '8px' }}>
+                  Cadastrar
+                </Link>
+                <Link className="btn btn-outline-light" to="/login" style={{ borderRadius: '8px' }}>
+                  Login
+                </Link>
+              </>
+            )}
           </div>
         </div>
       </div>
