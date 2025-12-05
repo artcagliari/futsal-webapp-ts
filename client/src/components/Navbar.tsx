@@ -1,4 +1,3 @@
-// Em: client/src/components/Navbar.tsx
 import { Link, useLocation } from 'react-router-dom';
 
 export function Navbar() {
@@ -51,9 +50,17 @@ export function Navbar() {
               </Link>
             </li>
           </ul>
-          <Link className="btn btn-light" to="/admin" style={{ borderRadius: '8px' }}>
-            Área Admin
-          </Link>
+          <div className="d-flex gap-2">
+            <Link className="btn btn-outline-light" to="/register" style={{ borderRadius: '8px' }}>
+              Cadastrar
+            </Link>
+            <Link className="btn btn-outline-light" to="/login" style={{ borderRadius: '8px' }}>
+              Login
+            </Link>
+            <Link className="btn btn-light" to="/admin" style={{ borderRadius: '8px' }}>
+              Área Admin
+            </Link>
+          </div>
         </div>
       </div>
     </nav>

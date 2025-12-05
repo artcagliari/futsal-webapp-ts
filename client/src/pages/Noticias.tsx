@@ -1,4 +1,3 @@
-// Em: client/src/pages/Noticias.tsx
 import { useState, useEffect } from 'react';
 
 type Noticia = {
@@ -14,7 +13,6 @@ export function Noticias() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    // Busca os dados da API usando o proxy do Vite
     fetch('/api/noticias')
       .then(res => {
         if (!res.ok) throw new Error('Erro ao buscar notícias');
@@ -34,7 +32,7 @@ export function Noticias() {
   return (
     <div className="container my-5 fade-in">
       <div className="page-header">
-        <h1>Últimas Notícias</h1>
+      <h1>Últimas Notícias</h1>
         <p className="lead text-muted">Fique por dentro de tudo que está acontecendo no mundo do futsal! Aqui você encontra as novidades mais quentes.</p>
       </div>
 
@@ -69,7 +67,7 @@ export function Noticias() {
                 Encontramos <strong>{noticias.length}</strong> {noticias.length === 1 ? 'notícia' : 'notícias'} para você!
               </p>
               <div className="row g-4">
-                {noticias.map(noticia => (
+        {noticias.map(noticia => (
                   <div key={noticia.id} className="col-md-6">
                     <div className="card h-100">
                       <div className="card-body">
@@ -94,8 +92,8 @@ export function Noticias() {
                       </div>
                     </div>
                   </div>
-                ))}
-              </div>
+        ))}
+      </div>
             </>
           )}
         </>

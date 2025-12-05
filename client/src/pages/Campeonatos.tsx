@@ -1,7 +1,5 @@
-// Em: client/src/pages/Campeonatos.tsx
 import { useState, useEffect } from 'react';
 
-// Definindo um tipo para os dados do campeonato
 type Campeonato = {
   id: number;
   nome: string;
@@ -14,7 +12,6 @@ export function Campeonatos() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    // Busca os dados da API usando o proxy do Vite
     fetch('/api/campeonatos')
       .then(res => {
         if (!res.ok) throw new Error('Erro ao buscar campeonatos');
@@ -34,7 +31,7 @@ export function Campeonatos() {
   return (
     <div className="container my-5 fade-in">
       <div className="page-header">
-        <h1>Campeonatos</h1>
+      <h1>Campeonatos</h1>
         <p className="lead text-muted">Aqui estão todos os campeonatos que estão rolando! Escolha um e acompanhe de perto.</p>
       </div>
 
@@ -69,7 +66,7 @@ export function Campeonatos() {
                 Encontramos <strong>{campeonatos.length}</strong> {campeonatos.length === 1 ? 'campeonato' : 'campeonatos'} para você!
               </p>
               <div className="row g-4">
-                {campeonatos.map(camp => (
+        {campeonatos.map(camp => (
                   <div key={camp.id} className="col-md-6 col-lg-4">
                     <div className="card h-100">
                       <div className="card-body">
@@ -84,7 +81,7 @@ export function Campeonatos() {
                       </div>
                     </div>
                   </div>
-                ))}
+        ))}
               </div>
             </>
           )}

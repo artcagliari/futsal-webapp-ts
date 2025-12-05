@@ -76,7 +76,7 @@ a {
 .list-group-item:hover {
   background-color: #f8f9fa;
   padding-left: 2rem;
-}
+  }
 
 .container {
   flex: 1;
@@ -84,7 +84,7 @@ a {
 
 .fade-in {
   animation: fadeIn 0.5s ease-in;
-}
+  }
 
 @keyframes fadeIn {
   from {
